@@ -1,0 +1,29 @@
+<h1>New Application for <%= @job.title %></h1>
+
+<%= form_with(model: [@job, @application], local: true) do |form| %>
+  <% if @application.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :applicant_name %>
+    <%= form.text_field :applicant_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cover_letter %>
+    <%= form.text_area :cover_letter, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Submit Application', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Applications', job_applications_path(@job), class: 'btn btn-secondary' %>

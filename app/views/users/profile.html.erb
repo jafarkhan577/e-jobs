@@ -1,0 +1,12 @@
+<h1>Profile</h1>
+
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<h2>Job Applications</h2>
+<% @applications.each do |application| %>
+  <div class="application-item">
+    <h3><%= link_to application.job.title, job_path(application.job) %></h3>
+    <p>Applied on: <%= application.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+<% end %>

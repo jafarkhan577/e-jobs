@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* Devise-specific styles */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height */
+  background-color: #f4f7fa; /* Optional background */
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px; /* Form width */
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Customize error messages */
+.alert.alert-danger {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert.notice {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/* Optional additional styling for Devise forms */
+.devise-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Your custom styles for the rest of the app */
+header {
+  background-color: #0066cc;
+  text-align: center;
+  padding: 15px;
+}
+
+.logo {
+  max-width: 250px; /* Logo max width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Centering */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0 5px;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #007bff;
+  border-radius: 5px;
+}
+
+.pagination .current {
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination .disabled {
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.pagination a:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination .active span {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination .disabled span {
+  color: #ccc;
+  border-color: #ddd;
+}
+
+.pagination .prev, .pagination .next {
+  font-weight: bold;
+}

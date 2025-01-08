@@ -1,0 +1,13 @@
+<h1>Application Details for <%= @job.title %></h1>
+
+<div>
+  <strong>Applicant Name:</strong> <%= @application.applicant_name %>
+</div>
+
+<div>
+  <strong>Cover Letter:</strong> <%= @application.cover_letter %>
+</div>
+
+<%= link_to 'Back to Applications', job_applications_path(@job), class: 'btn btn-secondary' %>
+<%= link_to 'Edit', edit_job_application_path(@job, @application), class: 'btn btn-warning' %>
+<%= link_to 'Delete', job_application_path(@job, @application), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

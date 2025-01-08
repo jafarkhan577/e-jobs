@@ -1,0 +1,41 @@
+<h1>Job Details</h1>
+
+<p><strong>Title:</strong> <%= @job.title %></p>
+<p><strong>Description:</strong> <%= @job.description %></p>
+<p><strong>Posted by: <%= @user.name %></p>  <!-- Displaying the user's name -->
+<p><strong>Location:</strong> <%= @job.location || 'Not available' %></p>
+<p><strong>Salary:</strong> <%= @job.salary || 'Not available' %></p>
+
+<h2>User Profile</h2>
+<h2>My Applications</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Company</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applications.each do |application| %>
+      <tr>
+        <td><%= application.job.title %></td>
+        <td><%= application.job.company.name %></td>
+        <td>Submitted</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @user.present? %>
+  <p><strong>Name:</strong> <%= @user.name %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Phone:</strong> <%= @user.phone %></p>
+<% else %>
+  <p>User not found.</p>
+<% end %>
+<%= link_to 'Apply for this job', job_job_applications_path(job_id: @job.id) %>
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %> |
+<%= link_to 'Delete', job_path(@job), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-primary' %>

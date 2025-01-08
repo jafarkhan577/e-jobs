@@ -1,0 +1,28 @@
+<!-- app/views/job_listings/index.html.erb -->
+<h1>Job Listings</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job_listings.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.location %></td>
+        <td><%= job.category %></td>
+        <td>
+          <%= link_to 'Show', job_path(job) %> |
+          <%= link_to 'Edit', edit_job_listing_path(job) %> |
+          <%= link_to 'Destroy', job_listing_path(job), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Job Listing', new_job_listing_path %>

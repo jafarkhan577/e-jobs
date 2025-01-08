@@ -1,0 +1,35 @@
+<!-- app/views/admin/dashboard/index.html.erb -->
+<h1>Admin Dashboard</h1>
+
+<!-- You can display a welcome message or stats here -->
+<p>Welcome to the Admin Dashboard!</p>
+
+<%= link_to 'Manage Jobs', jobs_path, class: 'btn btn-primary' %>
+<%= link_to 'User Management', users_path, class: 'btn btn-secondary' %>
+
+<div class="dashboard-stats">
+  <div class="stat-box">
+    <h2>Total Users</h2>
+    <p><%= User.count %></p> <!-- Display total number of users -->
+  </div>
+
+  <div class="stat-box">
+    <h2>Total Jobs</h2>
+    <p><%= Job.count %></p> <!-- Display total number of jobs -->
+  </div>
+
+  <div class="stat-box">
+    <h2>Total Companies</h2>
+    <p><%= Company.count %></p> <!-- Display total number of companies -->
+  </div>
+</div>
+
+<div class="actions">
+  <h2>Quick Actions</h2>
+  <ul>
+    <li><%= link_to 'Manage Users', admin_users_path %></li> <!-- Link to manage users -->
+    <li><%= link_to 'Manage Jobs', admin_jobs_path %></li> <!-- Link to manage jobs -->
+    <li><%= link_to 'Manage Companies', admin_companies_path %></li> <!-- Link to manage companies -->
+  </ul>
+</div>
+

@@ -1,0 +1,26 @@
+<h1>Edit Profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <div>
+    <%= f.label :name, "Full Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, "Email Address" %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :phone, "Phone Number" %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save Changes", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Back to Profile", user_path(@user), class: "btn btn-secondary" %>
+</div>

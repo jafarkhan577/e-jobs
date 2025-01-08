@@ -1,0 +1,37 @@
+<h1>Edit Job</h1>
+
+<%= form_with(model: @job, local: true) do |form| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+      <ul>
+        <% @job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Job Title" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Job Description" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category, "Job Category" %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Job", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Back to Jobs", jobs_path, class: "btn btn-secondary" %>
+</div>

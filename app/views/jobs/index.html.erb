@@ -1,0 +1,69 @@
+<!-- app/views/jobs/index.html.erb -->
+
+<h1 class="my-4 text-center">Job Listings</h1>
+
+<div class="container mb-4">
+  <!-- Search Form -->
+  <%= form_with(url: jobs_path, method: :get, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :search, "Search by Title:" %>
+      <%= form.text_field :search, value: params[:search], class: "form-control", placeholder: "Enter job title" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :location, "Search by Location:" %>
+      <%= form.text_field :location, value: params[:location], class: "form-control", placeholder: "Enter location" %>
+    </div>
+    <%= form.submit "Search", class: "btn btn-primary mt-2" %>
+  <% end %>
+  
+</div>
+
+<div class="container mb-3">
+  <%= link_to 'Post a New Job', new_job_path, class: 'btn btn-success' %>
+</div>
+
+<!-- Jobs Table -->
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @jobs.any? %>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td>
+              <h5><%= link_to job.title, job_path(job), class: "text-decoration-none text-primary" %></h5>
+            </td>
+            <td><%= truncate(job.description, length: 50) %></td>
+            <td>
+              <div class="d-flex gap-2">
+                <%= link_to 'Show', job_path(job), class: 'btn btn-info btn-sm' %>
+                <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-warning btn-sm' %>
+                <%= link_to 'Delete', job_path(job), method: :delete, data: { confirm: 'Are you sure you want to delete this job?' }, class: 'btn btn-danger btn-sm' %>
+                <%= link_to 'My Applications', job_applications_path(job), class: 'btn btn-secondary btn-sm' %>
+                <%= button_to 'Apply', job_applications_path(job), method: :post, class: 'btn btn-primary btn-sm' %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="3" class="text-center">No jobs found. Try searching with different keywords.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate @jobs %>
+</div>

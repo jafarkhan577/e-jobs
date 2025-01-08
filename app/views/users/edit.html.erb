@@ -1,0 +1,53 @@
+<h1>Edit User</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Name Field -->
+  <div class="field">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <!-- Email Field -->
+  <div class="field">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <!-- Password Field -->
+  <div class="field">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <!-- Password Confirmation Field -->
+  <div class="field">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <!-- Resume Upload Field -->
+  <div class="field">
+    <%= form.label :resume, class: "form-label" %>
+    <%= form.file_field :resume, class: "form-control" %>
+    <% if @user.resume.attached? %>
+      <p>Current Resume: <%= link_to "Download", rails_blob_path(@user.resume, disposition: "attachment") %></p>
+    <% end %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="actions">
+    <%= form.submit "Update User", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
